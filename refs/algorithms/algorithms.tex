@@ -1,0 +1,40 @@
+\documentclass[]{article}
+
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\begin{document}
+
+\begin{algorithm}
+	\caption{Evolução Diferencial}\label{euclid}
+	\begin{algorithmic}[1]
+		\State $t \gets 1$
+		\State Inicializar a população $X_t = \{x_{t,i}; i = 1, \dots, N\}$	
+		\While{algum critério de parada não for satisfeito}
+			\For{$i = 1$ \textbf{to} $N$}
+				\State Selecione aleatoriamente $r_1, r_2, r_3 \in \{1, \dots, N\}$
+				\State Selecione aleatoriamente $\delta_i \in \{1, \dots, n\}$
+				\For{$j = 1$ \textbf{to} $n$}
+					\If {$U_{[0,1]} \leq C \lor j = \delta_i$} 
+						\State $u_{t,i,j} = x_{t,r1,j} + F (x_{t,r2,j} - x_{t,r3,j})$
+					\Else 
+						\State $u_{t,i,j} = x_{t,i,j}$
+					\EndIf
+				\EndFor
+			\EndFor
+			\For{$i = 1$ \textbf{to} $N$}
+				\If {$f(u_{t,i}) \leq f(x_{t,i})$} 
+					\State $x_{t+1,i} \gets u_{t,i}$
+				\Else 
+					\State $x_{t+1,i} \gets x_{t,i}$
+				\EndIf
+			\EndFor
+			\State $t \gets t + 1$
+		\EndWhile
+		\Return $Melhor(X_t)$
+	\end{algorithmic}
+\end{algorithm}
+
+
+\end{document}

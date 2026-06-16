@@ -1,0 +1,31 @@
+\documentclass[]{article}
+
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+
+\begin{document}
+
+BOA: \\
+
+ %Código
+\begin{algorithm}[H]
+	$t \gets 0$ \\
+	Gerar população inicial $P(t)$ \\	
+	$parar \gets F$ \\
+	\Repita {$parar == V$} {
+		Selecionar indivíduos promissores $S(t)$ em $P(t)$ \\
+		Construir uma rede $B(t)$\\
+		Gerar um conjunto de $q$ novos indivíduos $O(t)$ baseados em $B(t)$ \\
+		Criar uma nova população $P(t+1)$ substituindo uma quantidade $q$ de indivíduos em $P(t)$ por $O(t)$ \\
+		$t \gets t + 1$ \\
+		\Se {critério de parada for satisfeito} 
+		{
+			$parar \gets V$
+		}
+	}
+	\Retorna Melhor indivíduo de $P(t)$
+		
+\label{alg:boa}
+\caption{\textsc{Algoritmo de Otimização Bayesiana}}
+\end{algorithm}
+
+\end{document}
